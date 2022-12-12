@@ -10,8 +10,6 @@ const JointSeparateBudget = ({husbandIncome, setHusbandIncome, wifeIncome, setWi
     const [amountHusband, setAmountHusband] = useState(0);
     const [amountWife, setAmountWife] = useState(0);
 
-    console.log(typeof percentageHusband)
-
     function handleHusbandIncome(event) {
         setHusbandIncome(event.target.value);
         setLocalStorageIncome('husbandIncome', event);
@@ -33,7 +31,7 @@ const JointSeparateBudget = ({husbandIncome, setHusbandIncome, wifeIncome, setWi
     //Вычисление доли от общего дохода в процентах
     function calculateMembersPercentage(memberIncome) {
         const result = memberIncome / totalIncome * 100;
-        return result.toFixed(1);
+        return result;
     }
     //Вычисление доли от общего дохода в процентах
     function calculateMemberAmount(memberPercentage) {
@@ -79,8 +77,8 @@ const JointSeparateBudget = ({husbandIncome, setHusbandIncome, wifeIncome, setWi
                     <input type="number" onChange={(event) => setTotalAmount(event.target.value)} value={totalAmount} />
                 </label>
                 <p>Сумма доходов: {totalIncome}</p>
-                <p>Муж зарабатывает {!isNaN(percentageHusband) ? percentageHusband : 0}% от общего дохода</p>
-                <p>Жена зарабатывает {!isNaN(percentageWife) ? percentageWife : 0}% от общего дохода</p>
+                <p>Муж зарабатывает {!isNaN(percentageHusband) ? percentageHusband.toFixed(1) : 0}% от общего дохода</p>
+                <p>Жена зарабатывает {!isNaN(percentageWife) ? percentageWife.toFixed(1) : 0}% от общего дохода</p>
                 <p>Муж платит: {!isNaN(amountHusband) ? amountHusband : 0}</p>
                 <p>Жена платит: {!isNaN(amountWife) ? amountWife : 0}</p>
             </form>
