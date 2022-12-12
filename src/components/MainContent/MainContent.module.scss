@@ -1,0 +1,32 @@
+.jointSeparate {
+  padding-top: 88px;
+
+
+  &__title {
+    margin: 0;
+    color: #90A38D;
+    font-family: "Montserrat", "Roboto", "Arial", sans-serif;
+    font-size: 32px;
+    text-align: center;
+    text-transform: uppercase;
+
+    b {
+      font-size: 83px;
+      line-height: 1.2;
+      color: #90A38D;
+    }
+  }
+  &__mainImg {
+    display: block;
+    width: 100%;
+    max-width: 767px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 85px;
+  }
+  &__textBlock {
+    margin: 0;
+    margin-bottom: 40px;
+  }
+}

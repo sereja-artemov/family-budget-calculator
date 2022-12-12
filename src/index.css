@@ -1,1 +1,17 @@
+@import url(normalize.css);
 @import url(components/JointSeparateBudget/JointSeparateBudget.module.scss);
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #222;
+    background-color: #E6F1E5;
+}
+
+.container {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}

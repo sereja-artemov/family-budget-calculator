@@ -14,6 +14,7 @@ const JointSeparateBudget = ({husbandIncome, setHusbandIncome, wifeIncome, setWi
         setHusbandIncome(event.target.value);
         setLocalStorageIncome('husbandIncome', event);
     }
+
     function handleWifeIncome(event) {
         setWifeIncome(event.target.value);
         setLocalStorageIncome('wifeIncome', event);
@@ -24,15 +25,18 @@ const JointSeparateBudget = ({husbandIncome, setHusbandIncome, wifeIncome, setWi
             localStorage.setItem(storageName, JSON.stringify(event.target.value));
         }
     }
+
     //Общий доход
     function calculateTotalIncome() {
         setTotalIncome(Number(husbandIncome) + Number(wifeIncome));
     }
+
     //Вычисление доли от общего дохода в процентах
     function calculateMembersPercentage(memberIncome) {
         const result = memberIncome / totalIncome * 100;
         return result;
     }
+
     //Вычисление доли от общего дохода в процентах
     function calculateMemberAmount(memberPercentage) {
         const result = totalAmount * (memberPercentage / 100);
@@ -65,16 +69,16 @@ const JointSeparateBudget = ({husbandIncome, setHusbandIncome, wifeIncome, setWi
                 <fieldset>
                     <label>
                         Введите доход мужа
-                        <input type="number" onChange={handleHusbandIncome} value={husbandIncome} />
+                        <input type="number" onChange={handleHusbandIncome} value={husbandIncome}/>
                     </label>
                     <label>
                         Введите доход жены
-                        <input type="number" onChange={handleWifeIncome} value={wifeIncome} />
+                        <input type="number" onChange={handleWifeIncome} value={wifeIncome}/>
                     </label>
                 </fieldset>
                 <label>
                     Сумма расходов
-                    <input type="number" onChange={(event) => setTotalAmount(event.target.value)} value={totalAmount} />
+                    <input type="number" onChange={(event) => setTotalAmount(event.target.value)} value={totalAmount}/>
                 </label>
                 <p>Сумма доходов: {totalIncome}</p>
                 <p>Муж зарабатывает {!isNaN(percentageHusband) ? percentageHusband.toFixed(1) : 0}% от общего дохода</p>
