@@ -10,10 +10,24 @@
     text-align: center;
     text-transform: uppercase;
 
+    @media (max-width: 768px) {
+      font-size: 21px;
+    }
+    @media (max-width: 425px) {
+      font-size: 17px;
+    }
+
     b {
       font-size: 83px;
       line-height: 1.2;
       color: #90A38D;
+
+      @media (max-width: 768px) {
+        font-size: 52px;
+      }
+      @media (max-width: 425px) {
+        font-size: 33px;
+      }
     }
   }
 
@@ -59,6 +73,10 @@
     font-family: "Montserrat", "Roboto", "Arial", sans-serif;
     font-size: 25px;
     font-weight: bold;
+
+    @media (max-width: 425px) {
+      font-size: 23px;
+    }
   }
 
   &__subtitle {
@@ -77,6 +95,10 @@
     border-radius: 8px;
     background-color: #F5FDF4;
 
+    @media (max-width: 425px) {
+      padding: 30px 30px;
+    }
+
     h3 {
       margin: 0;
       font-size: 16px;
@@ -92,6 +114,10 @@
 
 .advantages {
   margin-bottom: 100px;
+
+  @media (max-width: 425px) {
+    margin-bottom: 70px;
+  }
 
   & > h2 {
     margin-bottom: 30px;

@@ -65,21 +65,21 @@ function JointSeparateBudget({
   }, [totalAmount, percentageHusband, percentageWife]);
 
   return (
-    <section className={s.jsBudget}>
+    <section className={s.root}>
       <form className={s.form} action="POST">
-        <fieldset className={s.topFieldWrapper}>
+        <div className={s.topFieldWrapper}>
           <div className={s.fields}>
             <div className={s.fields__top}>
-              <label>
+              <label className={`${s.fields__label} ${s.fields__labelTop}`}>
                 <span> Введите доход мужа</span>
                 <input className={s.fields__item} type="number" onChange={handleHusbandIncome} value={husbandIncome} placeholder="0" step="1000" min="0" max="1000000000" />
               </label>
-              <label>
+              <label className={`${s.fields__label} ${s.fields__labelTop}`}>
                 <span> Введите доход жены</span>
                 <input className={s.fields__item} type="number" onChange={handleWifeIncome} value={wifeIncome} placeholder="0" step="1000" min="0" max="1000000000" />
               </label>
             </div>
-            <label>
+            <label className={s.fields__label}>
               <span> Сумма расходов</span>
               <input className={s.fields__item} type="number" onChange={(event) => setTotalAmount(event.target.value)} value={totalAmount} />
             </label>
@@ -102,7 +102,7 @@ function JointSeparateBudget({
               </p>
             </div>
           </div>
-        </fieldset>
+        </div>
         <div className={s.jsBudget__resultBlock}>
             <div className={s.jsBudget__resultBlock__item}>
                 <p className={s.resultTitle}>Муж платит</p>
