@@ -95,7 +95,7 @@
     border-radius: 8px;
     background-color: #F5FDF4;
 
-    @media (max-width: 425px) {
+    @media (min-width: 425px) {
       padding: 23px;
       font-size: 14px;
     }
