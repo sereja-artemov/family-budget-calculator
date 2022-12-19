@@ -3,4 +3,5 @@
 Калькулятор позволяет рассчитать свой вклад в бюджет семьи, показывает расходы жены и мужа в процентах. 
 Разработал дизайн, сверстал и реализовал функционал на React.
 
-![family-budget-calculator](https://user-images.githubusercontent.com/97092702/208442050-c203177f-c5f2-497d-a8ef-6d983b3dbeb8.png)
+![family-budget-calculator 1](https://user-images.githubusercontent.com/97092702/208442536-47b99b06-8aad-4175-977c-ffd73d9d2910.png)
+
