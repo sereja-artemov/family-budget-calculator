@@ -5,5 +5,6 @@
 
 Проверить работу калькулятора можно тут: http://sereja-art.ru/project-build/family-budget-calculator/
 
-![family-budget-calculator 1](https://user-images.githubusercontent.com/97092702/208442536-47b99b06-8aad-4175-977c-ffd73d9d2910.png)
+![screencapture-sereja-art-ru-project-build-family-budget-calculator-2022-12-19-17_16_40 1](https://user-images.githubusercontent.com/97092702/208445882-7d548d45-fab3-45ae-a464-ec10b4521522.png)
+
 
