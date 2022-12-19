@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import s from './JointSeparateBudget.module.scss';
 
 function JointSeparateBudget({
-  husbandIncome, setHusbandIncome, wifeIncome, setWifeIncome,
-}) {
-  const [totalAmount, setTotalAmount] = useState(0);
+                               husbandIncome, setHusbandIncome, wifeIncome, setWifeIncome,
+                             }) {
+  const [totalAmount, setTotalAmount] = useState('');
   const [totalIncome, setTotalIncome] = useState(0);
   const [percentageHusband, setPercentageHusband] = useState(0);
   const [percentageWife, setPercentageWife] = useState(0);
@@ -21,8 +21,13 @@ function JointSeparateBudget({
     setLocalStorageIncome('wifeIncome', event);
   }
 
+  function handleTotalAmount(event) {
+    setTotalAmount(event.target.value);
+    setLocalStorageIncome('totalAmount', event);
+  }
+
   function setLocalStorageIncome(storageName, event) {
-    if (event.target.value !== '') {
+    if (event.target.value !== '' || event.target.value !== 0) {
       localStorage.setItem(storageName, JSON.stringify(event.target.value));
     }
   }
@@ -51,6 +56,9 @@ function JointSeparateBudget({
     if (localStorage.wifeIncome) {
       setWifeIncome(JSON.parse(localStorage.wifeIncome));
     }
+    if (localStorage.totalAmount) {
+      setTotalAmount(JSON.parse(localStorage.totalAmount));
+    }
   }, []);
 
   useEffect(() => {
@@ -65,56 +73,56 @@ function JointSeparateBudget({
   }, [totalAmount, percentageHusband, percentageWife]);
 
   return (
-    <section className={s.root}>
-      <form className={s.form} action="POST">
-        <div className={s.topFieldWrapper}>
-          <div className={s.fields}>
-            <div className={s.fields__top}>
-              <label className={`${s.fields__label} ${s.fields__labelTop}`}>
-                <span> Введите доход мужа</span>
-                <input className={s.fields__item} type="number" onChange={handleHusbandIncome} value={husbandIncome} placeholder="0" step="1000" min="0" max="1000000000" />
+      <section className={s.root}>
+        <form className={s.form} action="POST">
+          <div className={s.topFieldWrapper}>
+            <div className={s.fields}>
+              <div className={s.fields__top}>
+                <label className={`${s.fields__label} ${s.fields__labelTop}`}>
+                  <span> Введите доход мужа</span>
+                  <input className={s.fields__item} type="number" onChange={handleHusbandIncome} value={husbandIncome} placeholder="0" step="1000" min="0" max="1000000000" />
+                </label>
+                <label className={`${s.fields__label} ${s.fields__labelTop}`}>
+                  <span> Введите доход жены</span>
+                  <input className={s.fields__item} type="number" onChange={handleWifeIncome} value={wifeIncome} placeholder="0" step="1000" min="0" max="1000000000" />
+                </label>
+              </div>
+              <label className={s.fields__label}>
+                <span> Сумма расходов</span>
+                <input className={s.fields__item} type="number" onChange={handleTotalAmount} value={totalAmount} placeholder="0" />
               </label>
-              <label className={`${s.fields__label} ${s.fields__labelTop}`}>
-                <span> Введите доход жены</span>
-                <input className={s.fields__item} type="number" onChange={handleWifeIncome} value={wifeIncome} placeholder="0" step="1000" min="0" max="1000000000" />
-              </label>
             </div>
-            <label className={s.fields__label}>
-              <span> Сумма расходов</span>
-              <input className={s.fields__item} type="number" onChange={(event) => setTotalAmount(event.target.value)} value={totalAmount} />
-            </label>
-          </div>
-          <div className={s.fieldsIncome}>
-            <p className={s.fieldsIncome__summ}>
-              <span className={s.fieldsIncome__title}>Сумма доходов</span> <br/>
-              {totalIncome}
-            </p>
-            <div className={s.fieldsIncome__columns}>
-              <p>
-                <span>Доля мужа</span> <br/>
-                {!isNaN(percentageHusband) ? Math.round(percentageHusband) : 0}
-                <span className={s.percentage}> %</span>
+            <div className={s.fieldsIncome}>
+              <p className={s.fieldsIncome__summ}>
+                <span className={s.fieldsIncome__title}>Сумма доходов</span> <br/>
+                {totalIncome}
               </p>
-              <p>
-                <span>Доля жены</span> <br/>
-                {!isNaN(percentageWife) ? Math.round(percentageWife) : 0}
-                <span className={s.percentage}> %</span>
-              </p>
+              <div className={s.fieldsIncome__columns}>
+                <p>
+                  <span>Доля мужа</span> <br/>
+                  {!isNaN(percentageHusband) ? Math.round(percentageHusband) : 0}
+                  <span className={s.percentage}> %</span>
+                </p>
+                <p>
+                  <span>Доля жены</span> <br/>
+                  {!isNaN(percentageWife) ? Math.round(percentageWife) : 0}
+                  <span className={s.percentage}> %</span>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={s.jsBudget__resultBlock}>
+          <div className={s.jsBudget__resultBlock}>
             <div className={s.jsBudget__resultBlock__item}>
-                <p className={s.resultTitle}>Муж платит</p>
-                <span className={s.resultNumber}>{!isNaN(amountHusband) ? amountHusband : 0}</span>
+              <p className={s.resultTitle}>Муж платит</p>
+              <span className={s.resultNumber}>{!isNaN(amountHusband) ? amountHusband : 0}</span>
             </div>
             <div className={s.jsBudget__resultBlock__item}>
-                <p className={s.resultTitle}>Жена платит</p>
-                <span className={s.resultNumber}>{!isNaN(amountWife) ? amountWife : 0}</span>
+              <p className={s.resultTitle}>Жена платит</p>
+              <span className={s.resultNumber}>{!isNaN(amountWife) ? amountWife : 0}</span>
             </div>
-        </div>
-      </form>
-    </section>
+          </div>
+        </form>
+      </section>
   );
 }
 
