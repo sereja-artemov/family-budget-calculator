@@ -72,6 +72,10 @@ function JointSeparateBudget({
     setAmountWife(calculateMemberAmount(percentageWife));
   }, [totalAmount, percentageHusband, percentageWife]);
 
+  function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
   return (
       <section className={s.root}>
         <form className={s.form} action="POST">
@@ -114,11 +118,11 @@ function JointSeparateBudget({
           <div className={s.jsBudget__resultBlock}>
             <div className={s.jsBudget__resultBlock__item}>
               <p className={s.resultTitle}>Муж платит</p>
-              <span className={s.resultNumber}>{!isNaN(amountHusband) ? amountHusband : 0}</span>
+              <span className={s.resultNumber}>{!isNaN(amountHusband) ? amountHusband.toLocaleString('ru-RU', ) : 0}</span>
             </div>
             <div className={s.jsBudget__resultBlock__item}>
               <p className={s.resultTitle}>Жена платит</p>
-              <span className={s.resultNumber}>{!isNaN(amountWife) ? amountWife : 0}</span>
+              <span className={s.resultNumber}>{!isNaN(amountWife) ? amountWife.toLocaleString('ru-RU', ) : 0}</span>
             </div>
           </div>
         </form>
